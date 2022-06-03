@@ -1,0 +1,9 @@
+project: PROJECT
+target: fuzz_guesser
+cmds:
+- cmd: /out/fuzz_guesser.pkg
+  env:
+    LD_PRELOAD: /out/sanitizer_with_fuzzer.so
+    ASAN_OPTIONS: symbolize=1:external_symbolizer_path=/out/llvm-symbolizer:detect_leaks=0
+  timeout: 150
+  libfuzzer: true
